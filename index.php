@@ -1,10 +1,13 @@
 <?php
+    session_start();
+    
     include ("db.php"); 
     $pagename="Make your home smart"; 
     echo "<link rel=stylesheet type=text/css href=mystylesheet.css>";
     echo "<title>".$pagename."</title>";
     echo "<body>";
     include ("headfile.html");
+    include('detectlogin.php');
     echo "<h4>".$pagename."</h4>";
 
     //create a $SQL variable and populate it with a SQL statement that retrieves product details

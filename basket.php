@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include("db.php");
 $pagename="Smart Basket"; 
 echo "<link rel=stylesheet type=text/css href=mystylesheet.css>"; 
@@ -7,6 +8,7 @@ echo "<title>".$pagename."</title>";
 
 echo "<body>";
 include ("headfile.html");
+include('detectlogin.php');
 echo "<h4>".$pagename."</h4>";
 
 
@@ -80,10 +82,16 @@ else{
 echo "</table></br>";
 echo "<a href='clearbasket.php'>CLEAR BASKET</a><br>";
 echo "<br>";
-echo "<p>New HomeTeq Customers: <a href='signup.php'>Sign Up</a><br>";
-echo "<br>";
-echo "<p>Returning HomeTeq Customers: <a href='login.php'>Log In</a><br>";
-    
+
+if(isset($_SESSION['userid'])) {
+    echo"To Finalise Your Order: <a href='checkout.php'> Checkout </a>";
+}
+else {
+    echo "<p>New HomeTeq Customers: <a href='signup.php'>Sign Up</a><br>";
+    echo "<br>";
+    echo "<p>Returning HomeTeq Customers: <a href='login.php'>Log In</a><br>";
+}
+  
 include("footie.html");
 echo "</body>";
 ?>
